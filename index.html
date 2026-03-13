@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Master - 할일 리스트 관리 앱</title>
+    <title>Todo Master - Task Manager</title>
     <style>
         * {
             margin: 0;
@@ -204,42 +204,42 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📝 Todo Master</h1>
-            <p>매나른 할일 리스트 관리 앜</p>
+            <h1>Todo Master</h1>
+            <p>Beautiful Task Management App</p>
         </div>
         
         <div class="content">
             <div class="input-group">
-                <input type="text" id="todoInput" placeholder="새로운 할일을 입력하세요..." />
-                <button onclick="addTodo()">+추가</button>
+                <input type="text" id="todoInput" placeholder="Add a new task..." />
+                <button onclick="addTodo()">Add</button>
             </div>
             
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterTodos('all')">전체</button>
-                <button class="filter-btn" onclick="filterTodos('active')">미완료</button>
-                <button class="filter-btn" onclick="filterTodos('completed')">완료</button>
+                <button class="filter-btn active" onclick="filterTodos('all')">All</button>
+                <button class="filter-btn" onclick="filterTodos('active')">Active</button>
+                <button class="filter-btn" onclick="filterTodos('completed')">Completed</button>
             </div>
             
             <ul class="todo-list" id="todoList"></ul>
             
             <div class="empty-state" id="emptyState">
-                <p>🌐 아직 할 일이 없습니다!</p>
-                <p>새로운 할일을 추가하는 것으로 시작하세요</p>
+                <p>No tasks yet!</p>
+                <p>Add a new task to get started</p>
             </div>
         </div>
         
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number" id="totalCount">0</div>
-                <div>전체</div>
+                <div>Total</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number" id="activeCount">0</div>
-                <div>미완료</div>
+                <div>Active</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number" id="completedCount">0</div>
-                <div>완료</div>
+                <div>Done</div>
             </div>
         </div>
     </div>
@@ -253,7 +253,7 @@
             const text = input.value.trim();
             
             if (text === '') {
-                alert('끊른 내용으로 할일을 추가해주세요!');
+                alert('Please enter a task!');
                 return;
             }
             
@@ -280,7 +280,7 @@
         }
         
         function deleteTodo(id) {
-            if (confirm('정말 단놰하시겠습니까?')) {
+            if (confirm('Delete this task?')) {
                 todos = todos.filter(t => t.id !== id);
                 saveTodos();
                 render();
@@ -338,7 +338,7 @@
                     li.innerHTML = `
                         <input type="checkbox" class="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo(${todo.id})" />
                         <span class="todo-text">${escapeHtml(todo.text)}</span>
-                        <button class="delete-btn" onclick="deleteTodo(${todo.id})">X</button>
+                        <button class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</button>
                     `;
                     todoList.appendChild(li);
                 });
